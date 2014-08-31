@@ -9,7 +9,7 @@ def index():
 	return render_template('index.html')
 
 @app.route('/livedata/<lat>/<lng>')
-def livedata():
+def livedata(lat,lng):
 	url = 'https://api.uber.com/v1/estimates/time'
 
 	parameters = {
