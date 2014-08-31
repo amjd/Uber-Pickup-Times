@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8" />
+    <style type="text/css">
+    body {
+      font-family: 'Open Sans', Helvetica, sans-serif;
+    }
+    .container {
+      margin-left: auto;
+      margin-right: auto;
+      width: 800px;
+    }
+    #map {
+      display: block;
+      width: 600px;
+      height:400px;
+      top: 40px;
+      margin: auto;
+      border: 5px solid #cacaca;
+    }
+    #heading {
+      font-size: 18px;
+      font-weight: 700;
+      text-align: center;
+      margin-top: 40px;
+    }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="gmaps.js"></script>
+    <script type="text/javascript">
+      var map;
+      $(document).ready(function(){
+        map = new GMaps({
+          div: '#map',
+          lat: 12.946550,
+          lng: 77.600615,
+          zoom: 10
+        });
+        
+        GMaps.geolocate({     
+          success: function(position){
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            map.setCenter(latitude, longitude);
+            map.setZoom(16);
+            map.addMarker({
+              lat: latitude,
+              lng: longitude,
+              title: latitude + ', ' + longitude,
+              infoWindow: {
+                content: '<p>You are here.</p>'
+              }
+            });
+            $.get('http://uberme.herokuapp.com/livedata/'+latitude+'/'+longitude,function(data){
+              $('.info').html(data);
+            })
+          },     
+          error: function(error){    
+            alert('Geolocation failed: '+error.message);   
+          },     
+          not_supported: function(){    
+            alert("Your browser does not support geolocation");     
+          },     
+          always: function(){    
+            //alert("Done!");    
+          }    
+        });
+      });
+    </script>
+</head>
+<body>
+<div id="heading">Uber API Experiment</div>
+<div class="container">
+  <div id="map"></div>
+  <div id="info"></div>
+</div>
+</body>
+</html>
