@@ -59,7 +59,7 @@
                 content: '<p>You are here.</p>'
               }
             });
-            $.get('http://localhost:5000/livedata/'+latitude+'/'+longitude,function(data){
+            $.get('http://uberme.herokapp.com/livedata/'+latitude+'/'+longitude,function(data){
               data = JSON.parse(data);
               car_list = data['times'];
               //$('#info').append(car_list);
