@@ -9,6 +9,7 @@ def index():
 	return render_template('index.html')
 
 @app.route('/livedata/<lat>/<lng>')
+def livedata():
 	url = 'https://api.uber.com/v1/estimates/time'
 
 	parameters = {
@@ -20,3 +21,6 @@ def index():
 	response = requests.get(url, params=parameters)
 		
 	return json.dumps(response.json(),sort_keys=True, indent=4)
+
+if __name__ == '__main__':
+	app.run(debug=True)
