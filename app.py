@@ -1,8 +1,11 @@
 import requests
 import json
+import os
 from flask import Flask, render_template
 
 app = Flask(__name__)
+
+SERVER_TOKEN = os.environ['uber_server_token']
 
 @app.route('/')
 def index():
@@ -13,7 +16,7 @@ def livedata(lat,lng):
 	url = 'https://api.uber.com/v1/estimates/time'
 
 	parameters = {
-	    'server_token': 'xMSF2VlxJybkRJY5SeVFw15XJ8wCPzEBoiVoVfOu',
+	    'server_token': SERVER_TOKEN,
 	    'start_latitude': lat,
 	    'start_longitude': lng
 	}
