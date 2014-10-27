@@ -1,5 +1,5 @@
-Todo:
+##Todo:
 - Add loading indicator
-- Add button
+- Add button to get current availability of Uber rides
 - Add refresh option
-- Make separate style.css
+- Separate CSS and JS to their own files
