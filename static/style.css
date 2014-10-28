@@ -8,11 +8,11 @@ body {
 }
 #map {
   display: block;
-  width: 600px;
-  height:400px;
+  width: 700px;
+  height:500px;
   top: 40px;
   margin: auto;
-  border: 5px solid #cacaca;
+  border: 4px solid #cacaca;
 }
 #info {
   margin: 60px auto;
@@ -24,4 +24,7 @@ body {
   font-weight: 700;
   text-align: center;
   margin-top: 40px;
+}
+.btns {
+  display: table-row;
 }
