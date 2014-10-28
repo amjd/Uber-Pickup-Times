@@ -6,10 +6,11 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 SERVER_TOKEN = os.environ['uber_server_token']
+DOMAIN = os.environ['uber_app_domain']
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('index.html', domain=DOMAIN)
 
 @app.route('/livedata/<lat>/<lng>')
 def livedata(lat,lng):
