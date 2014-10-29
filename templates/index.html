@@ -36,10 +36,12 @@
                   for (var i=0; car_list.length; i++)
                   {
                     $('#info').append('<p>' + car_list[i]['display_name'] + ' / Estimated time: ' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.');
+                    $('html, body').animate({scrollTop: $("#info").offset().top}, 2000)
                   }
                 }
                 else {
-                  $('#info').append('<p>Sorry, no cars available at present.</p>')
+                  $('#info').append('<p>Sorry, no cars available at present.</p>');
+                  $('html, body').animate({scrollTop: $("#info").offset().top}, 2000)
                 }
               })
             },     
@@ -69,10 +71,12 @@
               for (var i=0; car_list.length; i++)
               {
                 $('#info').append('<p>' + car_list[i]['display_name'] + ' / Estimated time: ' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.');
+                $('html, body').animate({scrollTop: $("#info").offset().top}, 2000);
               }
             }
             else {
               $('#info').append('<p>Sorry, no cars available at present.</p>')
+              $('html, body').animate({scrollTop: $("#info").offset().top}, 2000)
             }
           })
         }
@@ -81,16 +85,17 @@
           div: '#map',
           lat: 12.946550,
           lng: 77.600615,
-          zoom: 10
+          zoom: 10,
+          scrollwheel: false
         });
         var styles = [{"featureType":"landscape","stylers":[{"hue":"#FFBB00"},{"saturation":43.400000000000006},{"lightness":37.599999999999994},{"gamma":1}]},{"featureType":"road.highway","stylers":[{"hue":"#FFC200"},{"saturation":-61.8},{"lightness":45.599999999999994},{"gamma":1}]},{"featureType":"road.arterial","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":51.19999999999999},{"gamma":1}]},{"featureType":"road.local","stylers":[{"hue":"#FF0300"},{"saturation":-100},{"lightness":52},{"gamma":1}]},{"featureType":"water","stylers":[{"hue":"#0078FF"},{"saturation":-13.200000000000003},{"lightness":2.4000000000000057},{"gamma":1}]},{"featureType":"poi","stylers":[{"hue":"#00FF6A"},{"saturation":-1.0989010989011234},{"lightness":11.200000000000017},{"gamma":1}]}];
 
         map.addStyle({
           styledMapName:"Styled Map",
           styles: styles,
-          mapTypeId: "apple-maps-esque"
+          mapTypeId: "light-dream"
         });
-        map.setStyle("apple-maps-esque");
+        map.setStyle("light-dream");
 
       });
     </script>
