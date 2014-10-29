@@ -7,13 +7,16 @@ A micro web app to find available Uber cars around you and along with their ETAs
 A demo of this is live at: [http://uberme.herokuapp.com](http://uberme.herokuapp.com)
 
 ###Usage
-1. Set environment variables for `uber_server_token` and `uber_app_host_name` (`localhost:5000` by default)
-```
+- Set environment variables for `uber_server_token` and `uber_app_host_name` (`localhost:5000` by default)
+
+```bash
 export uber_server_token=XXXXXXXXXXXXXX
 export uber_app_host_name=DOMAIN.EXT 
 ```
-2. Run the script and see it live at `localhost:5000`
-```
+
+- Run the script and see it live at `localhost:5000`
+
+```bash
 $ python app.py
  * Running on http://127.0.0.1:5000/
  * Restarting with reloader
