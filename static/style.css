@@ -39,7 +39,8 @@ p {
 }
 .btns:hover {
   border: 2px solid #27496D;
-  color: #27496D;
+  background: #27496D;
+  color: #fff;
 }
 .button-gp {
   text-align: center;
