@@ -24,6 +24,7 @@
               longitude = position.coords.longitude;
               map.setCenter(latitude, longitude);
               map.setZoom(16);
+              map.removeMarkers();
               map.addMarker({
                 lat: latitude,
                 lng: longitude,
@@ -38,11 +39,14 @@
                 if (car_list.length > 0)
                 {
                   $('#info').append('<h3>Available cars</h3>');
+                  $('#info').append('<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>');
                   for (var i=0; car_list.length; i++)
                   {
-                    $('#info').append('<p>' + car_list[i]['display_name'] + ' / Estimated time: ' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.');
-                    $('html, body').animate({scrollTop: $("#info").offset().top}, 1000)
+                    
+                    $('#info').append('<td>' + car_list[i]['display_name'] + '</td><td>' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.</td>');
                   }
+                  $('#info').append('</tr></tbody></table></div>');
+                  $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
                 }
                 else {
                   $('#info').append('<p>Sorry, no cars available at present.</p>');
@@ -73,11 +77,14 @@
             if (car_list.length > 0)
             {
               $('#info').append('<h3>Available cars</h3>');
+              $('#info').append('<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>');
               for (var i=0; car_list.length; i++)
               {
-                $('#info').append('<p>' + car_list[i]['display_name'] + ' / Estimated time: ' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.');
-                $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
+                
+                $('#info').append('<td>' + car_list[i]['display_name'] + '</td><td>' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.</td>');
               }
+              $('#info').append('</tr></tbody></table></div>');
+              $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
             }
             else {
               $('#info').append('<p>Sorry, no cars available at present.</p>')
