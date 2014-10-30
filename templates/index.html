@@ -13,6 +13,10 @@
       var map;
       function getLocation()
         {
+          var myNode = document.getElementById("info");
+          while (myNode.firstChild) {
+              myNode.removeChild(myNode.firstChild);
+          }
           GMaps.geolocate({     
             success: function(position){
               latitude = position.coords.latitude;
