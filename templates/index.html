@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title></title>
+    <title>Uber Pickup Times</title>
     <meta charset="utf-8" />
     <link href="/static/style.css" rel="stylesheet">
     <link href="/static/bootstrap.min.css" rel="stylesheet">
@@ -38,14 +38,17 @@
                 car_list = data['times'];
                 if (car_list.length > 0)
                 {
-                  $('#info').append('<h3>Available cars</h3>');
-                  $('#info').append('<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>');
-                  for (var i=0; car_list.length; i++)
+                  var result = '';
+                  result = result + '<h3>Available cars</h3>';
+                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>';
+                  for (var i=0; i < car_list.length; i++)
                   {
-                    
-                    $('#info').append('<td>' + car_list[i]['display_name'] + '</td><td>' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.</td>');
+                    var car_name = car_list[i]['display_name'];
+                    var car_eta = Math.round((car_list[i]['estimate']/60)*10)/10;
+                    result = result + '<td>' + car_name + '</td><td>' + car_eta + ' minutes.</td>';
                   }
-                  $('#info').append('</tr></tbody></table></div>');
+                  result = result + '</tr></tbody></table></div>'; 
+                  $('#info').append(result);
                   $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
                 }
                 else {
@@ -75,21 +78,24 @@
             data = JSON.parse(data);
             car_list = data['times'];
             if (car_list.length > 0)
-            {
-              $('#info').append('<h3>Available cars</h3>');
-              $('#info').append('<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>');
-              for (var i=0; car_list.length; i++)
-              {
-                
-                $('#info').append('<td>' + car_list[i]['display_name'] + '</td><td>' + (Math.round((car_list[i]['estimate']/60)*10)/10) + ' minutes.</td>');
-              }
-              $('#info').append('</tr></tbody></table></div>');
-              $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
-            }
-            else {
-              $('#info').append('<p>Sorry, no cars available at present.</p>')
-              $('html, body').animate({scrollTop: $("#info").offset().top}, 1000)
-            }
+                {
+                  var result = '';
+                  result = result + '<h3>Available cars</h3>';
+                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th></tr></thead><tbody><tr>';
+                  for (var i=0; i < car_list.length; i++)
+                  {
+                    var car_name = car_list[i]['display_name'];
+                    var car_eta = Math.round((car_list[i]['estimate']/60)*10)/10;
+                    result = result + '<td>' + car_name + '</td><td>' + car_eta + ' minutes.</td>';
+                  }
+                  result = result + '</tr></tbody></table></div>'; 
+                  $('#info').append(result);
+                  $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
+                }
+                else {
+                  $('#info').append('<p>Sorry, no cars available at present.</p>');
+                  $('html, body').animate({scrollTop: $("#info").offset().top}, 1000)
+                }
           })
         }
       $(document).ready(function(){

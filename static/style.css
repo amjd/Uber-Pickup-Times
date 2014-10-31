@@ -1,6 +1,7 @@
-body, p, h1, h2, h3, h4, h5, h6 {
+body, p, h1, h2, h3, h4, h5, h6, td, th, * {
   font-family: 'Lato', Helvetica, sans-serif;
 }
+
 p {
   font-size: 20px;
   font-weight: 300;
