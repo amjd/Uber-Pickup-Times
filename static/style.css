@@ -17,6 +17,15 @@ p {
   text-align: center;
   font-family: 'Lato', sans-serif;
 }
+.sub-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+.footer {
+  box-sizing: border-box;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0,0,0,0.2);
+}
 #map {
   display: block;
   width: 100%;

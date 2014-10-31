@@ -43,27 +43,27 @@
                 {
                   var result = '';
                   result = result + '<h3>Available cars</h3>';
-                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th><th></th></tr></thead><tbody><tr>';
+                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th><th></th></tr></thead><tbody>';
                   for (var i=0; i < car_list.length; i++)
                   {
                     var car_name = car_list[i]['display_name'];
                     var car_image_url;
                     var car_eta = Math.round((car_list[i]['estimate']/60)*10)/10;
-                    if (car_name == 'UberX')
+                    if (car_name == 'uberX' || car_name == 'UberX')
                       car_image_url = car_images[0];
                     else if (car_name == 'UberBLACK')
                       car_image_url = car_images[1];
-                    result = result + '<td>' + car_name + '</td><td>' + car_eta + ' minutes.</td><td><img src="' + car_image_url +'" /></td>';
+                    result = result + '<tr><td>' + car_name + '</td><td>' + car_eta + ' minutes.</td><td><img src="' + car_image_url +'" /></td></tr>';
                   }
-                  result = result + '</tr></tbody></table></div>'; 
-                  $('#info').append(result);
+                  result = result + '</tbody></table></div>'; 
+                  $(result).appendTo('#info').fadeIn('normal');
                   $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
                 }
                 else {
-                  $('#info').append('<p>Sorry, no cars available at present.</p>');
+                  $('<p>Sorry, no cars available at present.</p>').appendTo('#info').fadeIn('normal');
                   $('html, body').animate({scrollTop: $("#info").offset().top}, 1000)
                 }
-              })
+          })
             },     
             error: function(error){    
               alert('Geolocation failed: ' + error.message);   
@@ -91,24 +91,24 @@
                 {
                   var result = '';
                   result = result + '<h3>Available cars</h3>';
-                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th><th></th></tr></thead><tbody><tr>';
+                  result = result + '<div class="table-responsive"><table class="table table-striped"><thead><tr><th>Car Type</th><th>ETA</th><th></th></tr></thead><tbody>';
                   for (var i=0; i < car_list.length; i++)
                   {
                     var car_name = car_list[i]['display_name'];
                     var car_image_url;
                     var car_eta = Math.round((car_list[i]['estimate']/60)*10)/10;
-                    if (car_name == 'UberX')
+                    if (car_name == 'uberX' || car_name == 'UberX')
                       car_image_url = car_images[0];
                     else if (car_name == 'UberBLACK')
                       car_image_url = car_images[1];
-                    result = result + '<td>' + car_name + '</td><td>' + car_eta + ' minutes.</td><td><img src="' + car_image_url +'" /></td>';
+                    result = result + '<tr><td>' + car_name + '</td><td>' + car_eta + ' minutes.</td><td><img src="' + car_image_url +'" /></td></tr>';
                   }
-                  result = result + '</tr></tbody></table></div>'; 
-                  $('#info').append(result);
+                  result = result + '</tbody></table></div>'; 
+                  $(result).appendTo('#info').fadeIn('normal');
                   $('html, body').animate({scrollTop: $("#info").offset().top}, 1000);
                 }
                 else {
-                  $('#info').append('<p>Sorry, no cars available at present.</p>');
+                  $('<p>Sorry, no cars available at present.</p>').appendTo('#info').fadeIn('normal');
                   $('html, body').animate({scrollTop: $("#info").offset().top}, 1000)
                 }
           })
@@ -138,6 +138,7 @@
   <div class="row">
     <div class="col-md-12">
       <h1 class="page-header">Uber Pickup Times</h1>
+      <p class="sub-title">Find available Uber rides around you along with their ETAs! Click <em>Find Cars</em> to begin.</p>
       <div id="map"></div>
     </div>
   </div>
@@ -152,6 +153,9 @@
   <div class="row">
     <div class="col-md-12">
       <div id="info">
+      </div>
+      <div class="footer">
+        <p>An open source experiment by <a href="https://amjd.me">Amjad</a>. View on <a href="https://github.com/amjd/Uber-Pickup-Times"><i class="fa fa-github"></i> GitHub.</a></p>
       </div>
     </div>
   </div>
