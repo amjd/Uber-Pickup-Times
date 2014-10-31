@@ -15,6 +15,7 @@
       var car_images = ['http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberx.png','http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-black.png'];
       function getLocation()
         {
+          $('.fa-location-arrow').removeClass('fa-location-arrow').addClass('fa-spinner fa-spin');
           var myNode = document.getElementById("info");
           while (myNode.firstChild) {
               myNode.removeChild(myNode.firstChild);
@@ -35,6 +36,7 @@
                 }
               });
               $.get('http://{{ domain }}/livedata/'+latitude+'/'+longitude,function(data){
+                $('.fa-spinner').removeClass('fa-spinner fa-spin').addClass('fa-location-arrow');
                 data = JSON.parse(data);
                 car_list = data['times'];
                 if (car_list.length > 0)
@@ -76,11 +78,13 @@
 
         function refreshCars()
         {
+          $('.fa-refresh').addClass('fa-spin');
           var myNode = document.getElementById("info");
           while (myNode.firstChild) {
               myNode.removeChild(myNode.firstChild);
           }
           $.get('http://{{ domain }}/livedata/'+latitude+'/'+longitude,function(data){
+            $('.fa-refresh').removeClass('fa-spin');
             data = JSON.parse(data);
             car_list = data['times'];
             if (car_list.length > 0)
