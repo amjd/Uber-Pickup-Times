@@ -7,15 +7,15 @@ app = Flask(__name__)
 
 SERVER_TOKEN = os.environ['uber_server_token']
 
-try:
-	HOST = os.environ['uber_app_host_name']
-except:
-	HOST = "localhost:5000"
+#try:
+#	HOST = os.environ['uber_app_host_name']
+#except:
+#	HOST = "localhost:5000"
 
 
 @app.route('/')
 def index():
-	return render_template('index.html', domain=HOST)
+	return render_template('index.html')
 
 @app.route('/livedata/<lat>/<lng>')
 def livedata(lat,lng):
