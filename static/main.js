@@ -1,5 +1,5 @@
 var map;
-var car_images = ['http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberx.png','http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-black.png'];
+var car_images = ['http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberx.png','http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-black.png','http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-uberxl2.png','http://d1a3f4spazzrp4.cloudfront.net/car-types/mono/mono-suv.png'];
 function getLocation()
 {
   $('.fa-location-arrow').removeClass('fa-location-arrow').addClass('fa-spinner fa-spin');
@@ -36,10 +36,14 @@ function getLocation()
             var car_name = car_list[i]['display_name'];
             var car_image_url;
             var car_eta = Math.round((car_list[i]['estimate']/60)*10)/10;
-            if (car_name == 'uberX' || car_name == 'UberX')
+            if (car_name == 'uberX')
               car_image_url = car_images[0];
             else if (car_name == 'UberBLACK')
               car_image_url = car_images[1];
+            else if (car_name == 'uberXL')
+              car_image_url = car_images[2];
+            else if (car_name == 'UberSUV')
+              car_image_url = car_images[3];
             result = result + '<tr><td>' + car_name + '</td><td>' + car_eta + ' minutes</td><td><img src="' + car_image_url +'" /></td></tr>';
           }
           result = result + '</tbody></table></div>'; 
