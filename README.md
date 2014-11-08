@@ -4,7 +4,7 @@ Uber-Pickup-Times
 A small experiment with Uber API to find available Uber cars around you and along with their ETAs. It uses the HTML5 Geolocation API to get the location.
 
 ###Demo
-A demo of this is live at: [http://ubernow.herokuapp.com](http://uberme.herokuapp.com)
+A demo of this is live at: [http://ubernow.herokuapp.com](http://ubernow.herokuapp.com)
 
 ###Usage
 Install dependencies
